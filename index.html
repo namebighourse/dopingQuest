@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Антидопинговый квест</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    .level { display: none; margin: 20px; }
+    .active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>Антидопинговый квест</h1>
+  <div id="level1" class="level active">
+    <h2>Уровень 1: РУСАДА</h2>
+    <p>Найди миссию РУСАДА на <a href="https://rusada.ru" target="_blank">официальном сайте РУСАДА</a>.</p>
+    <p>Какова основная цель РУСАДА?</p>
+    <input type="text" id="answer1" placeholder="Введите ответ">
+    <button onclick="checkAnswer(1)">Проверить</button>
+    <p id="error1" style="color: red;"></p>
+  </div>
+
+  <div id="level2" class="level">
+    <h2>Уровень 2: Запрещённые вещества и методы (WADA)</h2>
+    <p>Перейди на сайт <a href="https://www.wada-ama.org" target="_blank">WADA</a> и найди список запрещённых веществ.</p>
+    <p>Какие классы веществ запрещены?</p>
+    <input type="text" id="answer2" placeholder="Введите ответ">
+    <button onclick="checkAnswer(2)">Проверить</button>
+    <p id="error2" style="color: red;"></p>
+  </div>
+  <div id="level3" class="level">
+    <h2>Уровень 3: Гормоны</h2>
+    <p> Какой гормон является запрещенным в спорте и ествественным для человека одновременно?</p>
+    <p></p>
+    <input type="text" id="answer3" placeholder="Введите ответ">
+    <button onclick="checkAnswer(3)">Проверить</button>
+    <p id="error3" style="color: red;"></p>
+  </div>
+  <div id="level4" class="level">
+    <h2>Уровень 4: Даты</h2>
+    <p>Перейди на сайт <a href="https://yandex.ru/search/?text=%D0%92+%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC+%D0%B3%D0%BE%D0%B4%D1%83+%D0%BF%D0%BE%D1%8F%D0%B2%D0%B8%D0%BB%D1%81%D1%8F+%D0%A0%D0%A3%D0%A1%D0%90%D0%94%D0%90&clid=2411726&lr=66" target="_blank">Яндекс</a> и узнай в каком году </p>
+    <p>В каком году появился РУСАДА?</p>
+    <input type="text" id="answer4" placeholder="Введите ответ">
+    <button onclick="checkAnswer(4)">Проверить</button>
+    <p id="error4" style="color: red;"></p>
+  </div>
+  <div id="congrats" class="level">
+    <h2>Поздравляем!</h2>
+    <p>Ты успешно прошёл квест и узнал больше о мире антидопинга!</p>
+  </div>
+
+  <script>
+    function checkAnswer(level) {
+      const answers = {
+        1: "БОЧ", 
+        2: "АГС", 
+        3: "ТЕСТОСТЕРОН", 
+        4: "2008", 
+      };
+      
+      const input = document.getElementById(`answer${level}`).value.toUpperCase();
+      const errorElement = document.getElementById(`error${level}`);
+      
+      if (input === answers[level]) {
+        document.getElementById(`level${level}`).classList.remove("active");
+        
+        if (document.getElementById(`level${level + 1}`)) {
+          document.getElementById(`level${level + 1}`).classList.add("active");
+        } else {
+          document.getElementById("congrats").classList.add("active");
+        }
+      } else {
+        errorElement.textContent = "Неправильный ответ. Попробуй ещё раз!";
+      }
+    }
+  </script>
+</body>
+</html>
