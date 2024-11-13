@@ -1,0 +1,3 @@
+body { font-family: Arial, sans-serif; text-align: center; justify-content: center; }
+.level { display: none; margin: 20px; }
+.active { display: block; }
